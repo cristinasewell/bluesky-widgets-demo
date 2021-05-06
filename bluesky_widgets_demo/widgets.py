@@ -17,6 +17,7 @@ from bluesky_widgets.qt.run_engine_client import (
     QtReAddingSimpleScan,
     QtReAddingPlanAutomatically,
     QtReAddPVMotorScan,
+    QtGetREOutput,
 )
 from qtpy.QtWidgets import (
     QWidget,
@@ -62,7 +63,6 @@ class QtAddCustomPlot(QWidget):
         # self.model.auto_plot_builder to access AutoLines
         super().__init__(*args, **kwargs)
         self.model = model
-        print(type(self.model))
         layout = QGridLayout()
         self.setLayout(layout)
 
@@ -162,6 +162,7 @@ class QtRunEngineManager(QWidget):
 
         # vbox1.addWidget(QtReAddingSimpleScan(model), stretch=1)
         # vbox1.addWidget(QtReAddingPlanAutomatically(model), stretch=1)
+        vbox1.addWidget(QtGetREOutput(model), stretch=0)
         vbox1.addWidget(QtReAddPVMotorScan(model), stretch=1)
         vbox1.addWidget(QtRePlanQueue(model), stretch=2)
         hbox.addLayout(vbox1)
